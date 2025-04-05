@@ -5,7 +5,9 @@ const authRoutes = require('./routes/authRoutes');
 const shiftRoutes = require('./routes/shiftRoutes');
 const donationRoutes = require('./routes/donationRoutes');
 const shiftAssignmentRoutes = require('./routes/shiftAssignmentRoutes');
-const pool = require('./config/db.js')
+const pool = require('./config/db.js');
+const { authRouter } = require('./routes/auth');
+
 
 dotenv.config();
 
@@ -21,6 +23,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api', shiftRoutes);
 app.use('/api', donationRoutes);
 app.use('/api', shiftAssignmentRoutes);
+
+app.use('/backend/routes/auth', authRouter);
 
 // Start Server
 const PORT = process.env.PORT || 5000;

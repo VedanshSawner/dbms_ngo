@@ -10,23 +10,30 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Simple frontend validation (optional but good practice)
+    if (!username || !password) {
+      setError('Please enter both username and password.');
+      return;
+    }
+  
     try {
-      const response = await fetch('https://localhost:5000/api/auth/login', {
-          method: 'POST',
+      const response = await fetch('http://localhost:5000/backend/routes/auth/login', {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       const data = await response.json();
-
+      console.log('Login response:', data); // 👈 Debugging
+  
       if (response.ok) {
         // Store JWT token and user role in localStorage
         localStorage.setItem('token', data.token);
         localStorage.setItem('role', data.role);
-
+  
         // Redirect based on user role
         if (data.role === 'organizer') {
           navigate('/admin-dashboard');
@@ -34,12 +41,15 @@ const LoginPage = () => {
           navigate('/dashboard');
         }
       } else {
-        setError(data.message);
+        // Server responded with 400/401/etc
+        setError(data.message || 'Invalid username or password');
       }
     } catch (error) {
-      setError('Failed to log in. Please try again.');
+      console.error('Login error:', error);
+      setError('Failed to log in. Please try again later.');
     }
   };
+  
 
   return (
     <div className="login-page">
