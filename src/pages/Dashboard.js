@@ -342,7 +342,7 @@ const Dashboard = () => {
                   </div>
 
                   {/* Comment Section */}
-                  <div className="comment-section">
+                  {/* <div className="comment-section">
                     <label>Leave a comment:</label>
                     <br></br>
                     <textarea
@@ -351,15 +351,15 @@ const Dashboard = () => {
                       rows="3"
                       placeholder="Your feedback here..."
                     />
-                  </div>
+                  </div> */}
 
                   {/* Submit Button */}
-                  <button
+                  {/* <button
                     onClick={() => handleSubmitFeedback(shift.id)}
                     className="submit-feedback-btn"
                   >
                     Submit Feedback
-                  </button>
+                  </button> */}
                 </li>
               ))
             ) : (

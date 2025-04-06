@@ -1,8 +1,8 @@
 const db = require('../config/db');
 
-const insertShift = (shift_date, start_time, end_time, task, location, user_id, callback) => {
+const insertShift = (shift_date, start_time, end_time, task, location, callback) => {
     const query = `
-        INSERT INTO shifts (shift_date, start_time, end_time, task, location, user_id)
+        INSERT INTO shifts (shift_date, start_time, end_time, task, location)
         VALUES (?, ?, ?, ?, ?, ?)
     `;
     db.query(query, [shift_date, start_time, end_time, task, location, user_id], callback);

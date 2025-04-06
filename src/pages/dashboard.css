@@ -1,83 +1,89 @@
-/* Dashboard Styles */
+/* Global Styles */
 body {
   background-color: #000;  /* Black background */
-  color: #fff !important;;  /* White text */
+  color: #fff !important;
   font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
+/* Headings */
 h1, h2, h3 {
   color: #c4b47c;  /* Gold color for headings */
 }
 
-.dashboard-page {
-  text-align: center;
-  padding: 30px;
-  background-color: #1a1a1a;
-  color: #fff;
+/* Layout Container (Sidebar + Content) */
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
   min-height: 100vh;
 }
 
-.dashboard-title {
-  font-size: 36px;
+/* Sidebar */
+.sidebar {
+  background-color: #222;
+  padding: 20px;
+  width: 250px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar h2 {
+  font-size: 24px;
+  color: #c4b47c;
   margin-bottom: 20px;
 }
 
-.dashboard-container {
-  display: flex;
-  flex-direction: column;  /* Stack sections vertically */
-  align-items: center;
-  padding: 20px;
-}
-
-/* Profile Header with Logout Button */
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.logout-btn {
+.sidebar button,
+.sidebar a {
   background-color: #c4b47c;
   color: #000;
   border: none;
   padding: 10px 20px;
+  margin-bottom: 10px;
   border-radius: 5px;
+  text-align: left;
   cursor: pointer;
+  text-decoration: none;
+  display: block;
 }
 
-.donate-button {
-  background-color: #c4b47c;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.donate-button:hover {
-  background-color: #b1a46f;
-}
-.logout-btn:hover {
+.sidebar button:hover,
+.sidebar a:hover {
   background-color: #b1a46f;
 }
 
+/* Main Content */
+.main-content {
+  flex: 1;
+  background-color: #f4f4f4;
+  color: #000;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+/* Section Boxes */
 .assigned-shifts, .shift-list, .profile-section, .completed-shifts {
   background-color: #111;
-  width: 100%;
-  max-width: 800px;  /* Constrain max width for better layout */
+  color: #fff;
+  max-width: 800px;
+  margin: auto;
   margin-bottom: 20px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-  text-align: left;  /* Align content to the left */
+  text-align: left;
 }
 
+/* Section Titles */
 .assigned-shifts h2, .shift-list h2, .profile-section h2, .completed-shifts h2 {
-  color: #c4b47c;  /* Gold color for section titles */
+  color: #c4b47c;
   margin-bottom: 15px;
 }
 
+/* List Items */
 ul {
   list-style: none;
   padding: 0;
@@ -91,51 +97,56 @@ li {
 }
 
 li strong {
-  color: #c4b47c;  /* Gold color for important text */
+  color: #c4b47c;
 }
 
-/* Shift Item Styling for Available Shifts and Assigned Shifts */
+/* Shift Items */
 .shift-item-volunteer, .completed-shift-item {
   background-color: #2e2e2e;
   color: white;
   padding: 15px;
   border-radius: 5px;
-  box-shadow: none;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;  /* Align items to the top/left */
+  align-items: flex-start;
   margin-bottom: 10px;
-  text-align: left;  /* Ensure text is left-aligned */
-  width: 96%;  /* Ensure the shift items take full width */
-  position: relative;  /* Position the container relative to the button */
+  width: 96%;
+  text-align: left;
 }
 
-/* Ensure left-alignment for content in completed shifts */
 .completed-shift-item {
-  flex-direction: column;  /* Stack content vertically */
-  align-items: flex-start;  /* Align content to the left */
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Shift Details Styling */
+/* Shift Details */
 .shift-details {
   flex-grow: 1;
 }
 
 .shift-details strong {
-  color: #c4b47c;  /* Gold text color */
+  color: #c4b47c;
 }
 
-
-button.apply-btn {
+/* Buttons */
+button.apply-btn,
+.logout-btn,
+.donate-button,
+.submit-feedback-btn,
+.delete-category-btn {
   background-color: #c4b47c;
   color: #000;
   border: none;
-  padding: 8px 15px;
+  padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
 }
 
-button.apply-btn:hover {
+button.apply-btn:hover,
+.logout-btn:hover,
+.donate-button:hover,
+.submit-feedback-btn:hover,
+.delete-category-btn:hover {
   background-color: #b1a46f;
 }
 
@@ -144,16 +155,12 @@ button.apply-btn:disabled {
   cursor: not-allowed;
 }
 
-/* Profile Picture Styling */
-.profile-picture-section {
-  margin-bottom: 20px;  /* Add space between picture and other profile details */
-}
-
+/* Profile Picture */
 .profile-picture-preview img {
-  width: 150px;  /* Set a fixed width for the profile picture */
+  width: 150px;
   height: 150px;
-  border-radius: 50%;  /* Circular profile picture */
-  object-fit: cover;  /* Ensure the image covers the area */
+  border-radius: 50%;
+  object-fit: cover;
   margin-top: 10px;
 }
 
@@ -176,69 +183,43 @@ input[type="file"]::-webkit-file-upload-button {
   cursor: pointer;
 }
 
-/* Completed Shifts Section Styles */
-.completed-shift-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.rating-section, .comment-section {
-  margin-top: 10px;
-}
-
-/* Fixing the Textarea for Feedback Section */
+/* Textarea Styling */
 textarea {
-  width: 500px;  /* Make it take full width */
+  width: 100%;
+  max-width: 500px;
   padding: 10px;
   border-radius: 5px;
+  background-color: #333;
+  border: 1px solid #c4b47c;
+  color: #fff;
+  resize: vertical;
+  box-sizing: border-box;
   margin-top: 10px;
-  background-color: #333;  /* Gray background to match other elements */
-  border: 1px solid #c4b47c;  /* Gold border to match the theme */
-  color: #fff;  /* White text for contrast */
-  resize: vertical;  /* Allow vertical resizing only */
-  box-sizing: border-box;  /* Ensure padding doesn't affect the width */
 }
 
 textarea::placeholder {
-  color: #bbb;  /* Lighter gray for the placeholder text */
+  color: #bbb;
 }
 
-/* Star Rating Styles */
+/* Star Rating */
 .star {
   font-size: 24px;
-  color: white;  /* Lighter gold for stars */
+  color: white;
   cursor: pointer;
   margin-right: 5px;
 }
 
 .star.selected {
-  color: #c4b47c;  /* Gold color for selected stars */
+  color: #c4b47c;
 }
 
-.submit-feedback-btn {
-  background-color: #c4b47c;
-  color: #000;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  width: 150px;
-  white-space: nowrap;  /* Prevent text wrapping */
-}
-
-.submit-feedback-btn:hover {
-  background-color: #b1a46f;
-}
-
-/* Categories Section Styling */
+/* Categories Section */
 .categories-section {
   margin-top: 20px;
 }
 
 .categories-section h3 {
-  color: #c4b47c; /* Gold color for section title */
+  color: #c4b47c;
   margin-bottom: 10px;
 }
 
@@ -254,27 +235,17 @@ textarea::placeholder {
   align-items: center;
   padding: 10px;
   margin: 5px 0;
-  background-color: #333; /* Background for category items */
+  background-color: #333;
   border-radius: 5px;
   color: #fff;
   position: relative;
 }
 
 .delete-category-btn {
-  background-color: #c4b47c; /* Gold color for delete button */
-  color: #000;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
   position: absolute;
-  right: 10px; /* Position the button to the right */
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.delete-category-btn:hover {
-  background-color: #b1a46f; /* Darker gold on hover */
 }
 
 .add-category {
